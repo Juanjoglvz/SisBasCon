@@ -1,0 +1,6 @@
+# Basura de LaTex
+*.aux
+*.log
+*.pdf
+*.gz
+*.toc

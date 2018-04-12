@@ -1,0 +1,232 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{lastpage}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Sistemas Basados en el conocimiento}
+\rhead{Page \thepage\ of \pageref{LastPage}}
+\cfoot{\scriptsize{\today{}}}
+
+\begin{document}
+
+% First page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=0.6\textwidth]{logoesi}\\[5cm]
+
+% Title
+\rule{\linewidth}{0.5mm} \\[0.4cm]
+{ \huge \bfseries Sistemas Basados en el Conocimiento\\[0.4cm] }
+\rule{\linewidth}{0.5mm} \\[1.5cm]
+{\huge Diagnóstico de problemas mecánicos (2017/2018)}\\[0.5cm]
+
+% Author
+\large{Juan Jos\'e Corroto Mart\'in}
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Descripción y alcance}
+\subsection{Descripción del proyecto}
+Se desarrollará un prototipo de sistema capaz de diagnosticar el problema que tiene nuestro coche, en base a una serie de "síntomas" que podemos percibir, como por ejemplo que salga humo blanco por el tubo de escape. Este sistema estaría principalmente enfocado al aprendizaje para futuros mecánicos, y para la ayuda a la decisión en caso de que el mecánico sea poco experimentado.
+
+\subsection{Alcance y límites del proyecto}
+El sistema tratará de diagnosticar problemas con automóviles convencionales con un motor de cuatro tiempos. Sólo se tendrán en cuenta problemas relacionados con motor, batería todo lo relacionado con la mecánica del coche. No se tendrán en cuenta problemas con las ruedas, chapa y pintura, cristales o sistema digital.
+
+\section{Estudio de viabilidad}
+Para poder justificar el la realización de este sistema, se va a realizar un estudio de viabilidad basado en el \texttt{test de Slagel}.
+Éste test consiste en la evaluación del sistema en torno a \textbf{cuatro dimensiones}:
+\begin{itemize}
+\item Plausibilidad.
+\item Justificación.
+\item Adecuación.
+\item Éxito.
+\end{itemize}
+
+De cada dimensión se analizarán una serie de características y a cada una se le asignará un valor. Cada una de estas características tiene un peso definido por el propio test. Una vez analizadas todas las características se realizará una pseudo-media geométrica para obtener el valor asociado a dicha dimensión.
+
+La leyenda de las abreviaturas que se van a usar es:
+\begin{itemize}
+\item CAT: categoría. Puede ser EX (Expertos), TA (Tarea), DU (Directivos y/o usuarios).
+\item IDEN: Identificador de la característica.
+\item Tipo: E (Esencial), D (Deseable). Si una característica esencial no alcanza de valor un 7, el sistema será rechazado.
+\end{itemize}
+
+\newpage
+
+\begin{table}[]
+\centering
+\caption{Plausibilidad}
+\label{Plausibilidad}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllll@{}}
+\toprule
+CAT & IDEN & Peso & Valor & Denominación de la Característica                                                                                                                                                                                                                                                  & TIPO \\ \midrule
+EX  & P1   & 10   & 10    & Existen expertos.                                                                                                                                                                                                                                                                  & E    \\ \midrule
+EX  & P2   & 10   & 9     & \begin{tabular}[c]{@{}l@{}}El experto es genuino. Sí, aunque no sea un mecánico \\ reconozido a nivel mundial, el experto disponible sí \\ que es reconocido a nivel local.\end{tabular}                                                                                           & E    \\ \midrule
+EX  & P3   & 8    & 9     & \begin{tabular}[c]{@{}l@{}}El experto es cooperativo. Sí, el único problema \\ que podría haber es que es un mecánico muy \\ solicitado, y para hablar con él hay\\ que avisarle con anterioridad.\end{tabular}                                                                    & D    \\ \midrule
+EX  & P4   & 7    & 10    & \begin{tabular}[c]{@{}l@{}}El experto es capaz de articular sus métodos, \\ pero no categoriza.\end{tabular}                                                                                                                                                                       & D    \\ \midrule
+TA  & P5   & 10   & 8     & \begin{tabular}[c]{@{}l@{}}Existen suficientes casos de prueba: normales, \\ típicos. ejemplares, correosos, etc.\end{tabular}                                                                                                                                                     & E    \\ \midrule
+TA  & P6   & 10   & 10    & La tarea está bien estructurada y se entiende.                                                                                                                                                                                                                                     & D    \\ \midrule
+TA  & P7   & 10   & 7     & \begin{tabular}[c]{@{}l@{}}Sólo requiere habilidad cognoscitiva. Sí puesto que \\ el sistema solo se encarga de dar el diagnóstico, \\ no de resolver el problema. Puede ser que para \\ conseguir ciertos síntomas deseados sean \\ necesarias ciertas herramientas.\end{tabular} & D    \\ \midrule
+TA  & P8   & 9    & 10    & \begin{tabular}[c]{@{}l@{}}No se precisan resultados óptimos, sino sólo \\ satisfactorios, sin comprender el proyecto.\end{tabular}                                                                                                                                                & D    \\ \midrule
+TA  & P9   & 9    & 10    & La tarea no requiere sentido común.                                                                                                                                                                                                                                                & D    \\ \midrule
+DU  & P10  & 7    & 10    & \begin{tabular}[c]{@{}l@{}}Los directivos están verdaderamente comprometidos \\ con el proyecto.\end{tabular}                                                                                                                                                                      & D    \\ \bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Aplicando la fórmula de pseudo media geométrica adaptada a la dimensión de Plausibilidad:
+
+$$VCP = \prod_{i=1,2,5} (V_{pi}//V_{ui}) [(\prod_{i=1}^{10} P_pi*V_pi)]^{1/10}$$
+
+Obtenemos como resultado aproximado 82.
+
+\newpage
+
+\begin{table}[]
+\centering
+\caption{Justificación}
+\label{Justificación}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllll@{}}
+\toprule
+CAT & IDEN & Peso & Valor & Denominación de la Característica                                                                                                                                                                                                          & TIPO \\ \midrule
+EX  & J1   & 10   & 9     & \begin{tabular}[c]{@{}l@{}}El experto NO está disponible. Puesto que \\ el sistema está diseñado para el aprendizaje,\\ se considera que no hay experto disponible\end{tabular}                                                            & E    \\ \midrule
+EX  & J2   & 10   & 9     & \begin{tabular}[c]{@{}l@{}}Hay escasez de experiencia humana. De nuevo,\\ se puede enconstrar culquier mecánico, pero \\ como la aplicación está orientada al aprendizaje,\\ se considera que no se acude a ningún experto.\end{tabular}   & D    \\ \midrule
+TA  & J3   & 8    & 10    & \begin{tabular}[c]{@{}l@{}}Existe necesidad de experiencia simultánea en\\ muchos lugares. El experto puede querer un ayudante.\\ Con este sistema no tendría necesidad de contratar un \\ ayudante con su misma experiencia.\end{tabular} & D    \\ \midrule
+TA  & J4   & 10   & 8     & \begin{tabular}[c]{@{}l@{}}Necesidad de experiencia en entornos hostiles penosos \\ y/o poco gratificantes. La mecánica puede ser un ambiente\\ poco gratificante.\end{tabular}                                                            & E    \\ \midrule
+TA  & J5   & 8    & 7     & No existen soluciones alternativas admisibles                                                                                                                                                                                              & E    \\ \midrule
+DU  & J6   & 7    & 8     & Se espera una alta tasa de recuperación de la inversión.                                                                                                                                                                                   & D    \\ \midrule
+DU  & J7   & 8    & 9     & Resuelve una tarea útil y necesaria.                                                                                                                                                                                                       & E    \\ \bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Aplicando la fórmula de pseudo media geométrica adaptada a la dimensión de Justificación:
+
+$$VCJ = \prod_{i=1,4,5,7} (V_{ji}//V_{ui}) [(\prod_{i=1}^{7} P_ji*V_ji)]^{1/7}$$
+
+Obtenemos como resultado aproximado 72.
+
+\newpage
+
+\begin{table}[]
+\centering
+\caption{Adecuación}
+\label{Adecuación}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllll@{}}
+\toprule
+CAT & IDEN & Peso & Valor & Denominación de la Característica                                                                                                                                               & TIPO \\ \midrule
+EX  & A1   & 5    & 9     & La experiencia del experto está poco organizada.                                                                                                                                & D    \\ \midrule
+TA  & A2   & 6    & 9     & Tiene valor prácitco.                                                                                                                                                           & D    \\ \midrule
+TA  & A3   & 7    & 10    & Es una tarea más práctica que estratégica.                                                                                                                                      & D    \\ \midrule
+TA  & A4   & 7    & 9     & \begin{tabular}[c]{@{}l@{}}La tarea da soluciones que sirvan a necesidades\\ a largo plazo.\end{tabular}                                                                        & E    \\ \midrule
+TA  & A5   & 5    & 8     & \begin{tabular}[c]{@{}l@{}}La tarea no es demasiado fácil, pero es de\\ conocimiento intensivo tanto propio del dominio,\\ como de manipulación de la información.\end{tabular} & D    \\ \midrule
+TA  & A6   & 6    & 10    & \begin{tabular}[c]{@{}l@{}}Es de tamaño manejable, y/o es posible un enfoque\\ gradual y/o, una descomposición en subtareas \\ independientes.\end{tabular}                     & D    \\ \midrule
+EX  & A7   & 7    & 10    & \begin{tabular}[c]{@{}l@{}}La transferencia de experiencia entre humanos es \\ factible(experto a aprendiz).\end{tabular}                                                       & E    \\ \midrule
+TA  & A8   & 6    & 4     & \begin{tabular}[c]{@{}l@{}}Estaba identificada como un problema en el área\\ y los efectos de la introducción de un SE pueden\\ planificarse.\end{tabular}                      & D    \\ \midrule
+TA  & A9   & 9    & 10    & No requiere respuestas en tiempo real "inmediato".                                                                                                                              & E    \\ \midrule
+TA  & A10  & 9    & 10    & La tarea no requiere investigación básica.                                                                                                                                      & E    \\ \midrule
+TA  & A11  & 5    & 10    & \begin{tabular}[c]{@{}l@{}}El experto usa básicamente razonamiento simbólico\\ que implica factores subjetivos.\end{tabular}                                                    & D    \\ \midrule
+TA  & A12  & 5    & 10    & Es esencialmente de tipo heurístico.                                                                                                                                            & D    \\ \bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Aplicando la fórmula de pseudo media geométrica adaptada a la dimensión de Adecuación:
+
+$$VCA = \prod_{i=4,7,9,10} (V_{ai}//V_{ui}) [(\prod_{i=1}^{12} P_ai*V_ai)]^{1/12}$$
+
+Obtenemos como resultado aproximado 55.
+
+\newpage
+
+\begin{longtable}[c]{@{}llllll@{}}
+\caption{Éxito}
+\label{Éxito}\\
+\toprule
+CAT & IDEN & Peso & Valor & Denominación de la Característica                                                                                                                                                                                                                                                                                                                     & TIPO \\* \midrule
+\endfirsthead
+%
+\endhead
+%
+EX  & E1   & 8    & 9     & \begin{tabular}[c]{@{}l@{}}No se sienten amenazados por el proyecto\\  son capaces de sentirso intelectualmente\\  unidos al proyecto.\end{tabular}                                                                                                                                                                                                   & D    \\* \midrule
+EX  & E2   & 6    & 10    & \begin{tabular}[c]{@{}l@{}}Tienen un brillante historial en la \\ realización de esta tarea.\end{tabular}                                                                                                                                                                                                                                             & D    \\* \midrule
+EX  & E3   & 5    & 10    & \begin{tabular}[c]{@{}l@{}}Hay acuerdos en lo que constituye una\\ buena solución a la tarea.\end{tabular}                                                                                                                                                                                                                                            & D    \\* \midrule
+EX  & E4   & 5    & 10    & \begin{tabular}[c]{@{}l@{}}La única justificación para dar un paso\\ en la solución es la calidad de la solución\\ final.\end{tabular}                                                                                                                                                                                                                & D    \\* \midrule
+EX  & E5   & 6    & 10    & \begin{tabular}[c]{@{}l@{}}No hay un plazo de funalización estricto,\\ ni ningún otro proyecto depende de esta\\ tarea. El experto no necesita que este\\ sistema esté finalizado en ningún momento,\\ ni le influye en sus tareas de diario.\end{tabular}                                                                                            & D    \\* \midrule
+TA  & E6   & 7    & 10    & No está influenciada por vaivenes políticos.                                                                                                                                                                                                                                                                                                          & E    \\* \midrule
+TA  & E7   & 8    & 4     & \begin{tabular}[c]{@{}l@{}}Existen ya SS.EE. que resuelvan esa o\\ parecidas tareas. No tengo constancia de \\ que existan SS.EE. en esta tarea a día de\\ hoy.\end{tabular}                                                                                                                                                                          & D    \\* \midrule
+TA  & E8   & 8    & 8     & \begin{tabular}[c]{@{}l@{}}Hay cambios mínimos en los procedimientos\\ habituales. Aunque se inventen nuevas técnicas\\ para la recolección de "síntomas" en los talleres,\\ el procedimiento para el diagnóstico será el mismo,\\ puesto que los motores contemplados siempre son \\ similares.\end{tabular}                                         & D    \\* \midrule
+TA  & E9   & 5    & 9     & Las soluciones son explicables o interactivas.                                                                                                                                                                                                                                                                                                        & D    \\* \midrule
+TA  & E10  & 7    & 8     & \begin{tabular}[c]{@{}l@{}}La tarea es de I+D de carácter práctico, pero\\ no ambas cosas simlutáneamente.\end{tabular}                                                                                                                                                                                                                               & E    \\* \midrule
+DU  & E11  & 6    & 9     & \begin{tabular}[c]{@{}l@{}}Están mentalizados y tienen expectativas \\ realistas tanto en el alcance como en las\\ limitaciones.\end{tabular}                                                                                                                                                                                                         & D    \\* \midrule
+DU  & E12  & 7    & 10    & No rechazan de plano esta tecnología.                                                                                                                                                                                                                                                                                                                 & E    \\* \midrule
+DU  & E13  & 6    & 9     & \begin{tabular}[c]{@{}l@{}}El sistema interactúa inteligente y \\ amistosamente con el usuario.\end{tabular}                                                                                                                                                                                                                                          & D    \\* \midrule
+DU  & E14  & 9    & 10    & \begin{tabular}[c]{@{}l@{}}El sistema es capaz de explicar al usuario\\ su razonamiento.\end{tabular}                                                                                                                                                                                                                                                 & D    \\* \midrule
+DU  & E15  & 8    & 6     & \begin{tabular}[c]{@{}l@{}}La inserción del sistema se efectúa sin traumas,\\ es decir, apenas se interfiere en la rutina cotidiana\\ de la empresa. El sistema puede ser algo intrusivo\\ en el caso de uso de un mecánico novato, puesto \\ que normalmente el ordenador donde está el\\ sistema puede estar en una habitación aparte.\end{tabular} & D    \\* \midrule
+DU  & E16  & 6    & 10    & \begin{tabular}[c]{@{}l@{}}Están comprometidos durante toda la duración\\ del proyecto, incluso después de su implantación.\end{tabular}                                                                                                                                                                                                              & D    \\* \midrule
+DU  & E17  & 8    & 8     & Se efectúa una adecuada transferencia tecnológica.                                                                                                                                                                                                                                                                                                    & E    \\* \bottomrule
+\end{longtable}
+
+Aplicando la fórmula de pseudo media geométrica adaptada a la dimensión de Éxito:
+
+$$VCE = \prod_{i=6,10,12,17} (V_{ei}//V_{ui}) [(\prod_{i=1}^{17} P_ei*V_ei)]^{1/17}$$
+
+Obtenemos como resultado aproximado 57.
+
+
+Una vez hemos estudiado las cuatro dimensiones, se procede a hacer una media aritmética para conseguir el valor de viabilidad que nos aporta el \texttt{test de Slagel}.
+
+$$VC = \sum_{i=1}^4 VC_i / 4$$
+
+Por tanto:
+
+$$VC = \frac{82 + 72 + 55 + 57}{4} = 66.5$$
+
+Para conseguir un valor porcentual, recalculamos las cuatro dimensiones puntuando con el valor máximo a todas las características. Haciendo esto obtenemos el valor: 
+$$VC = \frac{89 + 86 + 62 + 67}{4} = 76$$
+
+Una vez tenemos el valor máximo en un \texttt{test de Slagel}, procedemos a calcular el porcentaje de nuestra viabilidad:
+
+$$VC = \frac{66.5}{76} * 100 = 87.5$$
+
+Por tanto, nuestro sistema tiene un $87,5$\% de viablidad según el \texttt{test de Slagel}.
+
+
+\end{document}
+
+%%% Local Variables:
+%%%   coding: utf-8
+%%%   flyspell-mode: t
+%%%   ispell-local-dictionary: "british"
+%%% End:

@@ -1,0 +1,231 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{lastpage}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Sistemas Basados en el conocimiento}
+\rhead{Página \thepage\ de \pageref{LastPage}}
+\cfoot{\scriptsize{\today{}}}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+
+% First page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=0.6\textwidth]{logoesi}\\[5cm]
+
+% Title
+\rule{\linewidth}{0.5mm} \\[0.4cm]
+{ \huge \bfseries Sistemas Basados en el Conocimiento\\[0.4cm] }
+\rule{\linewidth}{0.5mm} \\[1.5cm]
+{\huge Diagnóstico de problemas mecánicos (2017/2018)\\Entrevista 2}\\[0.5cm]
+
+% Author
+\large{Juan Jos\'e Corroto Mart\'in}
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\textbf{Fecha:} 28 - 03 - 2018 
+
+\textbf{Hora: } 16:00 - 16:30
+
+\textbf{Lugar:} Taller Jesús Sobrino
+
+\textbf{Asistentes:} Jesús Sobrino  (Experto)\\ \tab \tab \tab Juan José Corroto Martín(I.C.) 
+
+\section{Situación de análisis respecto al modelo general}
+ Esta entrevista se encuentra dentro del conjunto de entrevistas dedicadas a conocer la operativa del experto a la hora de diagnosticar posibles averías mecánicas dentro del alcance considerado en el sistema a desarrollar. 
+ 
+\section{Conocimiento anterior a la entrevista}
+El punto de partida de esta entrevista y resultado de la anterior es una definición más ajustada del alcance, con un posible caso que sirva para la demo, además de una primera aproximación al dominio físico del sistema. En la entrevista anterior, la cual fue no estructurada, se le pidió al experto de forma general que describiera los procesos que suele tener cuando un cliente le pide un diagnóstico en su coche.
+
+\underline{Lista de elementos físicos}
+\begin{itemize}
+\item[1] Orden de reparación.
+\item[2] Máquina de diagnosis.
+\item[3] código de avería.
+\item[4] Sensor.
+\item[5] Captador.
+\item[6] Turbo.
+\item[7] Sistema de álabes.
+\item[8] Electroválvula.
+\item[9] Tubo de vacío.
+\item[10] MITYVAC.
+\item[11] Válvula E.G.R.
+\end{itemize}
+
+\underline{Relaciones entre elementos}
+\begin{itemize}
+\item 4 equivalente a 5.
+\item Usar 2 da como resultado 3.
+\item 7, 8 y 9 son partes de 6.
+\item 10 se usa sólo con turbos que tengan 7
+\end{itemize}
+
+\underline{Acciones}
+\begin{itemize}
+\item Usar 2
+\item Comprobar parámetros de 4.
+\item Usar 10 para comprobar parámetros de 7
+\item Desmontar 11
+\end{itemize}
+
+\underline{Fallos}
+\begin{itemize}
+\item Pérdida de potencia
+\item Humo blanco
+\item Humo negro
+\end{itemize}
+ 
+\section{Objetivo de la entrevista}
+La segunda entrevista tratará primero de profundizar en los aspectos encontrados en la primera, así como repasar para comprobar que el conocimiento adquirido es correcto. Después se tratará de encontrar más posibles casos característicos, puesto que un sólo caso no es suficiente para tener una demo exitosa.
+Por tanto la entrevista se centrará en:
+
+
+\begin{itemize}
+ \item[A)] Repasar y corroborar aspectos de la sesión anterior.
+ \item[B)] Limitar aún más el alcance mediante reconocimiento de casos específicos, y que sea posible modelarlos en el sistema.
+ \end{itemize}
+
+ Cabe destacar que en todo momento se tratará de reconocer aún más elementos del dominio físico que sean necesarios en el sistema.
+ 
+ \subsection{Modo}
+ \begin{itemize}
+ \item \underline{Entrevista parcialmente estructurada}: En el repaso de la sesión anterior (Punto A)(Se denomina parcialmente estructurada porque existe conocimiento previo pero no lo suficiente como para plantear un conjunto concreto y ordenado de preguntas).
+ \item \underline{Entrevista no estructurada}: En el intento de limitar más el alcance (Punto B).
+ \end{itemize}
+ 
+ \subsection{Planteamiento de la entrevista}
+ Se identifican a continuación el conjunto de preguntas y técnicas que se utilizarán para conseguir los objetivos propuestos:
+ 
+ \begin{itemize}
+ \item[A)] \underline{Repaso de aspectos importantes}
+ \begin{itemize}
+ \item[A1.-] Se tratará de realizar un método de la división del dominio, en el que el I.C. tratará de dar síntomas para que el experto llegue a una conclusión. 
+ \item[A2.-] ¿Es el siguiente orden el correcto? Comprobación de tubos para ver si hay fuga de aire - MiTYVAC para comprobar álabes - ¿Algo más?
+ \item[A3.-] ¿Es la existencia de humo blanco suficiente para determinar un fallo de turbo?
+ \item[A4.-] ¿Es la existencia de humo negro suficiente para determinar que el fallo no es del turbo si no de la válvula E.G.R?
+ \item[A5.-] ¿Se utilizan las máquinas de diagnosis en este caso? Si es así, ¿Qué código de error lleva asociado este fallo?
+ \end{itemize}
+ \item[B)] \underline{Reconocimiento de casos específicos}
+ \begin{itemize}
+ \item[B1.-] ¿Existe alguna avería mecánica concreta y no muy específica a un modelo que no se identifique con una única pregunta?
+ \item[B2.-] En caso de identificar un posible caso: ¿Cuáles son las preguntas y pruebas que se suelen hacer para identificarlo?
+ \item[B3.-] En caso de identificar un posible caso: ¿Existe alguna avería que de síntomas similares?
+ \end{itemize}
+ \end{itemize}
+ 
+\section{Resultado de la sesión}
+Respuestas a las preguntas anteriores:
+\begin{itemize}
+\item[A)] \underline{Repaso de aspectos importantes}
+\begin{itemize}
+\item[A1.-] Conclusiones del ejemplo planteado: Siempre, el procedimiento a seguir consiste en primer lugar en utilizar la máquina de diagnosis. Una vez conseguido el código de diagnosis, entonces nos vamos al subsistema que nos marca dicho código.
+\item[A2.-] Depende de los síntomas que detectemos y del código que nos de la máquina de diagnosis. Luego depende, si el turbo es de geometría variable, lo que vas a comprobar por parámetros será el sistema de álabes. Lo primero que se suele hacer es echar un vistazo a todos los manguitos, porque se puede mirar si hay alguno cortado a simple vista. Si no hay ninguno cortado, se hace una prueba de estanquedad para ver si hay alguna fuga de presión. Si no pues hay que meterse dentro del turbo. Aquí hay que mirar los tubos de vació con la MITYVAC para ver si tienen alguna fuga. Después se miraría la electroválvula con la máquina de diagnosis obligándola a funcionar. Si la válvula funciona pues lo más probable es que ya sea un problema del propio turbo y habría que cambiarlo entero. Si el problema es del propio turbo ya no hay mucho que arreglar. Podemos intentar arreglarlo o limpiarlo por dentro, pero al final acaban volviéndose a averiar, así que según mi experiencia lo mejor es llegados a este punto lo mejor es cambiarlo.
+\item[A3.-] En el 99\% de los casos, si echa humo blanco y huele a aceite quemado, es el turbo el problema. Aún así habría que desmontar los tubos de admisión del turbo y mirar la holgura del eje. Si hay holgura en el eje del turbocompresor, entonces ese es el problema. También podría ser que el problema fuese que un pistón del motor esté perforado. En ese caso también habría pérdida de potencia, porque el motor tiene un pistón menos, y echaría humo blanco, pero no es fallo del turbo. Por eso, aunque en la gran mayoría sea el turbo, siempre hay que comprobar el turbo por si acaso.
+\item[A4.-] No tiene por qué.  Si echa humo negro puede ser fallo en un manguito del turbo. Sin embargo según mi experiencia lo más probable es que sea la válvula E.G.R. De todos modos solemos cerciorarnos usando la máquina de diagnosis. Si hay falta de potencia y la máquina de diagnosis nos dice que el fallo está en la válvula E.G.R. pues ahí lo tenemos. Pero si el código de avería es el del turbocompresor, entonces miramos el turbocompresor y no la válvula E.G.R.
+\item[A5.-] Las máquinas de diagnosis no sólo se usan para mirar códigos de avería. Estas máquinas también son las que se usan para ver los parámetros, es decir, comprobar las medidas que existen dentro del sistema y compararlas con las que deberían ser. También se puede forzar a una válvula o a un sistema eléctrico a funcionar. Por tanto claro que se usan. Primero siempre hay que diagnosticarlo, es decir, lo metes en la máquina y miras la orientación que ésta te da. Después, si tenemos que comprobar la presión de alguna zona o forzar una válvula pues ahí se usa.
+\end{itemize}
+\item[B)] \underline{Reconocimiento de casos específicos}
+\begin{itemize}
+\item[B1.-] El vehículo arranca mal en frío. Este problema puede ocurrir por muchas causas, por ejemplo puede ser el sensor de revoluciones del motor, que es un captador que tiene el volante. Puede ser por la presión del rail. Esto puede pasar porque un inyector tiene alguna fuga y el common-rail tiene menos presión. Incluso puede ser causado por la válvula E.G.R.
+\item[B2.-] En este caso como en cualquiera, lo primero que se ve es el código de avería. Si el código te da fallo de presión del rail, pues eso es lo que miramos. Si el código es el de la válvula E.G.R. pues eso es lo que miramos. Si tienes que mirar el sensor de revoluciones pues tienes que mirar componente a componente. Si todos los componentes están bien entonces habría que cambiar todo el sistema del sensor de revoluciones. Si te da fallo del sensor del rail, tienes que comprobar la instalación eléctrica, pero si la instalación eléctrica está bien, tendrás que mirar la presión dentro del sensor del rail. Si te da menos entonces es porque tienes pérdida de presión.
+\item[B3.-] Existen numerosas averías que pueden dar lugar a un problema de arranque en frío. El experto ha enumerado más de 5. Sin embargo con el fin de simplificar el sistema se modelarán las 3 posibilidades mencionadas anteriormente.
+\end{itemize}
+\end{itemize}
+
+\section{Resultados del análisis de la entrevista}
+\underline{Lista de elementos físicos encontrados}
+\begin{itemize}
+\item[12] Circuito de sobrealimentación
+\item[13] Manguito
+\item[14] Pistón del motor
+\item[15] Tubo de admisión
+\item[16] Eje de 6
+\item[17] Sensor de revoluciones.
+\item[18] Sistema common-rail.
+\end{itemize}
+
+\underline{Relaciones}
+\begin{itemize}
+\item 12 tiene 4.
+\item 17 es un 4.
+\item 18 tiene 4.
+\item 6 es parte de 12
+\end{itemize}
+
+\underline{Acciones}
+\begin{itemize}
+\item Forzar la actuación de 8 con 2
+\item Realizar prueba de estanquedad en 12
+\item Comprobar con 10 presión de 9
+\item Comprobar si hay algún 13 defectuoso
+\item Comprobación del sistema de 18
+\end{itemize}
+
+Nos hemos dado cuenta de que 10 no sólo se usa con 7, también con 9.
+
+\underline{Estado de elemento}
+\begin{itemize}
+\item Presión de 12 : Valor objetivo ¿?, Valor real ¿?
+\item Presión de 9 : Valor objetivo ¿?, Valor real ¿?, ¿Puede ser mayor o sólo menor?
+\item Funcionamiento de 8 : Levanta y baja correctamente al encender y apagar 12, no levanta y baja correctamente.
+\item Estado de 13: Correcto, defectuoso.
+\item Estado de 18: Correcto, defectuoso.
+\item Presión en 18: Correcta, Menor.
+\end{itemize}
+
+\underline{Fallos}
+\begin{itemize}
+\item 13 defectuoso
+\item 12 con fugas
+\item 9 con fugas o roturas
+\item Vehículo arranca mal en frío
+\end{itemize}
+
+\underline{Códigos de avería}
+\begin{itemize}
+\item fallo en 12: P0400
+\item fallo en 11: P0401
+\item fallo en 18: P0190
+\item fallo en 17: P0235
+\end{itemize}
+
+
+\end{document}
+
+%%% Local Variables:
+%%%   coding: utf-8
+%%%   flyspell-mode: t
+%%%   ispell-local-dictionary: "british"
+%%% End:

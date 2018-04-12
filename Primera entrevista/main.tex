@@ -1,0 +1,165 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{lastpage}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Sistemas Basados en el conocimiento}
+\rhead{Página \thepage\ de \pageref{LastPage}}
+\cfoot{\scriptsize{\today{}}}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+
+% First page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=0.6\textwidth]{logoesi}\\[5cm]
+
+% Title
+\rule{\linewidth}{0.5mm} \\[0.4cm]
+{ \huge \bfseries Sistemas Basados en el Conocimiento\\[0.4cm] }
+\rule{\linewidth}{0.5mm} \\[1.5cm]
+{\huge Diagnóstico de problemas mecánicos (2017/2018)\\Entrevista 1}\\[0.5cm]
+
+% Author
+\large{Juan Jos\'e Corroto Mart\'in}
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\textbf{Fecha:} 17 - 03 - 2018
+
+\textbf{Hora:} 09:00 - 10:00
+
+\textbf{Lugar:} Taller Jesús Sobrino
+
+\textbf{Asistentes:} Jesús Sobrino (Experto)\\ \tab \tab \tab Juan José Corroto Martín(I.C.) 
+
+\section{Situación de análisis respecto al modelo general}
+ Esta entrevista se encuentra dentro del conjunto de entrevistas dedicadas a conocer la operativa del experto a la hora de diagnosticar posibles averías mecánicas dentro del alcance considerado en el sistema a desarrollar. 
+ 
+\section{Conocimiento anterior a la entrevista}
+ El punto de partida de esta entrevista, al ser la primera de ellas, es nulo. 
+ 
+\section{Objetivo de la entrevista}
+ La entrevista estará enfocada de forma general a obtener algunos posibles casos característicos para reducir aún mas el alcance del sistema. También estará centrada en intentar conocer la operativa general del experto en su trabajo.
+ Por tanto la entrevista se centrará en:
+ 
+ \begin{itemize}
+ \item[A)] Limitar aún más el alcance mediante reconocimiento de casos específicos, y que sea posible modelarlos en el sistema.
+ \item[B)] Identificar el dominio físico y relaciones entre los elementos del dominio que maneja el experto en su día a día.
+ \end{itemize}
+ 
+ \subsection{Modo}
+ La entrevista será en su totalidad una \underline{entrevista no estructurada}. Al no existir conocimiento previo no podemos realizar ninguna pregunta dirigida.
+ 
+ \subsection{Planteamiento de la entrevista}
+ La entrevista consistirá en una seria de preguntas generales que se tratarán de preguntar en algún momento, pero siempre dejando al experto explorar posibles casos, puesto que nuestro objetivo principal en esta primera entrevista es adquirir el máximo conocimiento del dominio.
+ 
+ \begin{itemize}
+ \item[A)] \underline{Reconocimiento de casos específicos}
+ \begin{itemize}
+ \item[A1.-] ¿Existe alguna avería mecánica concreta y no muy específica a un modelo que no se identifique con una única pregunta?
+ \item[A2.-] En caso de identificar un posible caso: ¿Cuáles son las preguntas y pruebas que se suelen hacer para identificarlo?
+ \item[A3.-] En caso de identificar un posible caso: ¿Existe alguna avería que de síntomas similares?
+ \end{itemize}
+ Motivo de las preguntas: Limitar el alcance y reconocer casos para el sistema.
+ \item[B)] \underline{Identificación del dominio físico}
+ \begin{itemize}
+ \item[B1.-] Cuando entra un cliente al taller,¿cuál es la serie de preguntas que se suelen hacer?
+ \item[B2.-] Si el cliente te ha dicho todo lo que puede y no encuentras solución, ¿qué es lo siguiente que se hace?
+ \end{itemize}
+ Motivo de las preguntas: Identificar y ampliar el dominio físico.
+ \end{itemize}
+ 
+ 
+\section{Resultado de la sesión}
+ Respuestas a las preguntas anteriores:
+ \begin{itemize}
+ \item[A)] \underline{Reconocimiento de casos específicos}
+ \begin{itemize}
+ \item[A1.-] Una avería típica es un fallo en el turbo del coche. 
+ \item[A2.-] Lo que el cliente suele decir es que el coche ha perdido potencia o mucha potencia, el tubo de escape echa humo blanco y huele a aceite quemado. Algunos turbos son de geometría variable y no echarían humo blanco, pero sí perdería potencia porque el sistema de álabes no funcionaría. Un fallo en una electroválvula o un tubo de vacío también es un fallo de turbo y daría los mismos síntomas. Por tanto tenemos que realizar diversas pruebas para saber qué es lo que falla en el turbo. En caso de que sea porque haya tubos rajados o agrietados, usamos herramientas para comprobar la presión del circuito. Si tiene una fisura por ahí saldría el aire. En caso de que sean fallos del sistema de álabes, usamos una herramienta llamada MITYVAC para controlar la apertura de los álabes y así poder comprobar la sobrealimentación en milibares.
+ \item[A3.-] Una avería que podría dar casi los mismos síntomas que un fallo de turbo es un fallo en la válvula E.G.R. El coche pierde potencia pero el humo que sale es un poco más negro. Sin embargo, como el fallo no es el turbo, al realizar todas las pruebas que se realizan con el turbo no se va a encontrar ningún fallo. La única forma de ver si el problema es realmente la válvula E.G.R es desmontándola y ver si está obstruida.
+ \end{itemize}
+ \item[B)] \underline{Identificación del dominio físico}
+\begin{itemize}
+ \item[B1.-] El procedimiento comienza por abrir un orden de reparación, consistente en nombre, apellidos, fecha, dirección, datos del vehículo y otros datos relevantes. A continuación se preguntan "síntomas" que el cliente encuentre. Ejemplos típicos son pérdida de potencia o fallo del motor al arrancar. Dependiendo de lo que el cliente te describa, habrá que hacer una serie de preguntas para encontrar información relevante.
+ \item[B2.-] Tenemos otras herramientas como máquinas de diagnosis, que dan un código de avería orientativo, y en caso de que la máquina no de código, hay que encontrar la avería mediante parámetros. Esto consiste en medir la entrada y salida de cierto sistema dentro del coche para ver si es correcto. Todos los sensores y captadores tienen una medida asociada que se puede conseguir. Por ejemplo, un captador que mide la presión del combustible tiene que dar x bares de presión. Si da más del máximo o menos del mínimo, entonces ya está encontrada la avería. También hay que tener en cuenta que dichos sensores pueden ser los que den mala medida (pero esto forma parte de una avería en el sistema eléctrico, lo cuál no entra dentro del alcance del sistema).
+ \end{itemize}
+\end{itemize}  
+
+\section{Resultados del análisis de la entrevista}
+\underline{Lista de elementos físicos encontrados}
+\begin{itemize}
+\item[1] Orden de reparación.
+\item[2] Máquina de diagnosis.
+\item[3] código de avería.
+\item[4] Sensor.
+\item[5] Captador.
+\item[6] Turbo.
+\item[7] Sistema de álabes.
+\item[8] Electroválvula.
+\item[9] Tubo de vacío.
+\item[10] MITYVAC.
+\item[11] Válvula E.G.R.
+\end{itemize}
+
+\underline{Relaciones entre elementos}
+\begin{itemize}
+\item 4 equivalente a 5.
+\item Usar 2 da como resultado 3.
+\item 7, 8 y 9 son partes de 6.
+\item 10 se usa sólo con turbos que tengan 7
+\end{itemize}
+
+\underline{Acciones}
+\begin{itemize}
+\item Usar 2
+\item Comprobar parámetros de 4.
+\item Usar 10 para comprobar parámetros de 7
+\item Desmontar 11
+\end{itemize}
+
+\underline{Fallos}
+\begin{itemize}
+\item Pérdida de potencia
+\item Humo blanco
+\item Humo negro
+\end{itemize}
+
+\end{document}
+
+%%% Local Variables:
+%%%   coding: utf-8
+%%%   flyspell-mode: t
+%%%   ispell-local-dictionary: "british"
+%%% End:
