@@ -1,0 +1,290 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{lastpage}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Sistemas Basados en el conocimiento}
+\rhead{Página \thepage\ de \pageref{LastPage}}
+\cfoot{\scriptsize{\today{}}}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+
+% First page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=0.6\textwidth]{logoesi}\\[5cm]
+
+% Title
+\rule{\linewidth}{0.5mm} \\[0.4cm]
+{ \huge \bfseries Sistemas Basados en el Conocimiento\\[0.4cm] }
+\rule{\linewidth}{0.5mm} \\[1.5cm]
+{\huge Diagnóstico de problemas mecánicos (2017/2018)\\Entrevista 3}\\[0.5cm]
+
+% Author
+\large{Juan Jos\'e Corroto Mart\'in}
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\textbf{Fecha:} 20 - 04 - 2018 
+
+\textbf{Hora: } 11:00 - 11:30
+
+\textbf{Lugar:} Taller Jesús Sobrino
+
+\textbf{Asistentes:} Jesús Sobrino  (Experto)\\ \tab \tab \tab Juan José Corroto Martín(I.C.) 
+
+\section{Situación de análisis respecto al modelo general}
+ Esta entrevista se encuentra dentro del conjunto de entrevistas dedicadas a conocer la operativa del experto a la hora de diagnosticar posibles averías mecánicas dentro del alcance considerado en el sistema a desarrollar. 
+ 
+\section{Conocimiento anterior a la entrevista}
+El Punto de partida de esta entrevista y resultado de la anterior es una definición ajustada del alcance, con todos los casos que necesitábamos para la demo, además de una descripción bastante completa del dominio físico de sistema. En la entrevista anterior, la cual constó de una parte parcialmente estructurada, en la que se le propuso al experto un ejemplo concreto para ver de forma más realista su forma de actuar, además de preguntas para acotar y profundizar en el caso estudiado, y una parte no estructurada, en la que se le pidió al experto de forma general que describiera un caso concreto más para completar la demo.
+
+\underline{Lista de elementos físicos}
+\begin{itemize}
+\item[1] Orden de reparación.
+\item[2] Máquina de diagnosis.
+\item[3] código de avería.
+\item[4] Sensor.
+\item[5] Captador.
+\item[6] Turbo.
+\item[7] Sistema de álabes.
+\item[8] Electroválvula.
+\item[9] Tubo de vacío.
+\item[10] MITYVAC.
+\item[11] Válvula E.G.R.
+\item[12] Circuito de sobrealimentación
+\item[13] Manguito
+\item[14] Pistón del motor
+\item[15] Tubo de admisión
+\item[16] Eje de 6
+\item[17] Sensor de revoluciones.
+\item[18] Sistema common-rail.
+\end{itemize}
+
+\underline{Relaciones entre elementos}
+\begin{itemize}
+\item 4 equivalente a 5.
+\item Usar 2 da como resultado 3.
+\item 7, 8 y 9 son partes de 6.
+\item 12 tiene 4.
+\item 17 es un 4.
+\item 18 tiene 4.
+\item 6 es parte de 12
+\end{itemize}
+
+\underline{Acciones}
+\begin{itemize}
+\item Usar 2
+\item Comprobar parámetros de 4.
+\item Usar 10 para comprobar parámetros de 7 o 9.
+\item Desmontar 11
+\item Forzar la actuación de 8 con 2
+\item Realizar prueba de estanquedad en 12
+\item Comprobar con 10 presión de 9
+\item Comprobar si hay algún 13 defectuoso
+\item Comprobación del sistema de 18
+\end{itemize}
+
+\underline{Estado de elemento}
+\begin{itemize}
+\item Presión de 12 : Correcta, incorrecta.
+\item Presión de 9 : Correcta, incorrecta.
+\item Funcionamiento de 8 : Correcto, incorrecto.
+\item Estado de 13: Correcto, defectuoso.
+\item Estado de 18: Correcto, defectuoso.
+\item Presión en 18: Correcta, Defectuosa.
+\end{itemize}
+
+\underline{Fallos}
+\begin{itemize}
+\item Pérdida de potencia
+\item Humo blanco
+\item 13 defectuoso
+\item 12 con fugas
+\item 9 con fugas o roturas
+\item Vehículo arranca mal en frío
+\end{itemize}
+
+
+\underline{Códigos de avería}
+\begin{itemize}
+\item fallo en 12: P0400
+\item fallo en 11: P0401
+\item fallo en 18: P0190
+\item fallo en 17: P0235
+\end{itemize}
+ 
+\section{Objetivo de la entrevista}
+La tercera entrevista tendrá como objetivo presentar al experto nuestro resultado  de la conceptualización del conocimiento, para que nos de un visto bueno, y preguntar ciertos aspectos que parece que no están del todo claros.
+
+Por tanto la entrevista se centrará en:
+
+\begin{itemize}
+ \item[A)] Preguntas concretas acerca del proceso de identificación y actuación frente a problemas con respecto a 11, y de forma más general con 17 y 18.
+ \item[B)] Presentar el resultado de la conceptualización del conocimiento de las entrevistas anteriores, para identificar posibles fallas en elementos del dominio o acciones.
+ \end{itemize}
+ 
+ \subsection{Modo}
+ \begin{itemize}
+ \item \underline{Entrevista parcialmente estructurada}: En la pregunta por procesos con 11, 17 y 18. (Punto A)(Se denomina parcialmente estructurada porque existe conocimiento previo pero no lo suficiente como para plantear un conjunto concreto y ordenado de preguntas).
+ \item \underline{Entrevista no estructurada}: En el repaso por la conceptualización (Punto B).
+ \end{itemize}
+ 
+ \subsection{Planteamiento de la entrevista}
+ Se identifican a continuación el conjunto de preguntas y técnicas que se utilizarán para conseguir los objetivos propuestos:
+ 
+ \begin{itemize}
+ \item[A)] \underline{Preguntas sobre aspectos que no están claros}
+ \begin{itemize}
+ \item[A1.-] En el caso de que el código de avería tenga que ver con la válvula E.G.R, ¿cuál es el plan típico de actuación?
+ \item[A2.-] En el caso de que el código de avería tenga que ver con El sensor de revoluciones, ¿cuál es el plan típico de actuación?
+ \item[A3.-] En el caso de que el código de avería tenga que ver con El sistema common-rail, ¿cuál es el plan típico de actuación?
+ \end{itemize}
+ \item[B)] \underline{Identifiación de posibles fallos en conceptualización}
+ \begin{itemize}
+ \item[B1.-] ¿Alguno de los elementos físicos del dominio que hemos identificado se llama de alguna otra manera, o alguna de sus relaciones es incorrecta?
+ \item[B2.-] ¿En qué momento se mira el sistema de álabes en caso de que el turbo sea de geometría variable?
+ \end{itemize}
+ \end{itemize}
+ 
+\section{Resultado de la sesión}
+Respuestas a las preguntas anteriores:
+\begin{itemize}
+\item[A)] \underline{Preguntas sobre aspectos que no están claros}
+\begin{itemize}
+\item[A1.-] En el caso de que el código nos marque que el fallos está en la válvula E.G.R, tenemos que mirar si la válvula es mecánica o eléctrica. Si es mecánica, tenemos que mirar los tubos de vacío y comprobar que no hay ninguna fuga. En caso de que sea eléctrica tendremos que mirar la instalación y comprobar que está correctamente. Si no hay problemas en esas zonas, lo siguiente sería cambiar la válvula. 
+\item[A2.-] En el caso de que el código nos de error en el sensor de revoluciones, lo primero que miraremos será la instalación eléctrica. Si encontramos algún error pues podemos repararlo fácilmente. Si está bien, lo siguiente a mirar será la corona sifónica a la que el sensor está conectada, y mirar si está bien. Si no está bien reemplazaremos la corona, pero si la corona está bien reemplazaremos el sensor.
+\item[A3.-] En el caso de que el código nos de error en el sistema common-rail, esto es sí o sí porque falta presión. Lo que haremos será buscar alguna fuga en la rampa de inyección. Si la encontramos podemos repararla y hemos acabado, pero si no tiene fuga, el problema tiene que estar o bien en la bomba de alta o en el regulador de presión. Comprobamos cuál de ellos está defectuoso y lo cambiamos.
+\end{itemize}
+\item[B)] \underline{Identifiación de posibles fallos en conceptualización}
+\begin{itemize}
+\item[B1.-] Los captadores y los sensores no son exactamente lo mismo. El raíl común del sistema common-rail se denomina rampa de inyección. Mityvac sólo nos sirve para comprobar el vacío de algo, pero no para medir presión en alguna zona. Los tubos de vacío no tienen presión si no depresión. Los álabes no tienen presión en sí mismos, lo que se comprueba es su movimiento.
+\item[B2.-] Normalmente se comprobaría después de comprobar que no hay fugas en los tubos de vacío.
+\end{itemize}
+\end{itemize}
+
+\section{Resultados del análisis de la entrevista}
+\underline{Lista de elementos físicos}
+\begin{itemize}
+\item[1] Orden de reparación.
+\item[2] Máquina de diagnosis.
+\item[3] código de avería.
+\item[4] Sensor.
+\item[5] Captador.
+\item[6] Turbo.
+\item[7] Sistema de álabes.
+\item[8] Electroválvula.
+\item[9] Tubo de vacío.
+\item[10] MITYVAC.
+\item[11] Válvula E.G.R.
+\item[12] Circuito de sobrealimentación
+\item[13] Manguito
+\item[14] Pistón del motor
+\item[15] Tubo de admisión
+\item[16] Eje de 6
+\item[17] Sensor de revoluciones.
+\item[18] Sistema common-rail.
+\item[19] Rampa de inyección.
+\item[20] Corona sifónica.
+\item[21] Bomba de alta.
+\item[22] Regulador de presión.
+\end{itemize}
+
+\underline{Relaciones entre elementos}
+\begin{itemize}
+\item Usar 2 da como resultado 3.
+\item 7, 8 y 9 son partes de 6.
+\item 12 tiene 4.
+\item 17 es un 4.
+\item 18 tiene 4.
+\item 6 es parte de 12
+\item 21 y 22 y 19 son partes de 18.
+\item 17 mide revoluciones de 20
+\end{itemize}
+
+\underline{Acciones}
+\begin{itemize}
+\item Usar 2
+\item Comprobar parámetros de 4.
+\item Usar 10 para comprobar parámetros de 7 o 9.
+\item Desmontar 11
+\item Forzar la actuación de 8 con 2
+\item Realizar prueba de estanquedad en 12
+\item Comprobar con 10 presión de 9
+\item Comprobar si hay algún 13 defectuoso
+\item Comprobación de presión en 19.
+\end{itemize}
+
+\underline{Estado de elemento}
+\begin{itemize}
+\item Presión de 12 : Correcta, incorrecta.
+\item Depresión de 9 : Correcta, incorrecta.
+\item Funcionamiento de 8 : Correcto, incorrecto.
+\item Estado de 13: Correcto, Incorrecto.
+\item Movimiento de 7: Correcto, incorrecto.
+\item Holgura de 16: Correcta, Incorrecta.
+\item Instalación eléctrica de 11: Correcta, Defectuosa.
+\item Estado de 20: Correcta, Incorrecta.
+\item Instalación eléctrica de 17: Correcta, Incorrecta.
+\item Fugas en 19: Sí, no.
+\item Funcionamiento de 21: Correcto, Incorrecto.
+\item Funcionamiento de 22: Correcto, Incorrecto.
+\end{itemize}
+
+\underline{Fallos}
+\begin{itemize}
+\item Pérdida de potencia
+\item Humo blanco
+\item 13 defectuoso
+\item 12 con fugas
+\item 9 con fugas o roturas
+\item Vehículo arranca mal en frío
+\end{itemize}
+
+
+\underline{Códigos de avería}
+\begin{itemize}
+\item fallo en 12: P0400
+\item fallo en 11: P0401
+\item fallo en 18: P0190
+\item fallo en 17: P0235
+\end{itemize}
+
+
+\end{document}
+
+%%% Local Variables:
+%%%   coding: utf-8
+%%%   flyspell-mode: t
+%%%   ispell-local-dictionary: "british"
+%%% End:
